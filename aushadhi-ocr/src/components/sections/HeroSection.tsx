@@ -12,7 +12,7 @@ const AnimatedParticles = dynamic(
   { ssr: false }
 )
 
-const HeroSection: React.FC = () => {
+const HeroSection = (): JSX.Element => {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50">
       <AnimatedParticles />
