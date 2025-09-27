@@ -1,0 +1,121 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { Scene } from '@/components/3d/Scene'
+import { Button } from '@/components/ui/button'
+import { Upload, Shield, Search } from 'lucide-react'
+
+export function HeroSection() {
+  return (
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+      {/* Background particles */}
+      <div className="absolute inset-0">
+        {[...Array(50)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-blue-200 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.3, 0.8, 0.3],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+        {/* Left side - Text content */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="space-y-8"
+        >
+          <div className="space-y-4">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight"
+            >
+              <span className="text-blue-600">Scan.</span>{' '}
+              <span className="text-green-600">Detect.</span>{' '}
+              <span className="text-red-600">Stay Safe.</span>
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl text-gray-600 max-w-lg"
+            >
+              Protect yourself from counterfeit medicines with AI-powered OCR technology. 
+              Upload a photo and instantly verify authenticity.
+            </motion.p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4"
+          >
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+              <Upload className="mr-2 h-5 w-5" />
+              Try Prototype
+            </Button>
+            <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+              <Shield className="mr-2 h-5 w-5" />
+              Learn More
+            </Button>
+          </motion.div>
+
+          {/* Feature highlights */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="grid grid-cols-3 gap-6 pt-8"
+          >
+            <div className="text-center">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                <Search className="h-6 w-6 text-blue-600" />
+              </div>
+              <p className="text-sm font-medium text-gray-700">OCR Scanning</p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                <Shield className="h-6 w-6 text-green-600" />
+              </div>
+              <p className="text-sm font-medium text-gray-700">AI Detection</p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                <Upload className="h-6 w-6 text-red-600" />
+              </div>
+              <p className="text-sm font-medium text-gray-700">Instant Results</p>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Right side - 3D Scene */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="h-96 lg:h-[500px] relative"
+        >
+          <Scene />
+        </motion.div>
+      </div>
+    </section>
+  )
+}
