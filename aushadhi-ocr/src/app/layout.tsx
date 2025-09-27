@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   description: "Protect yourself from counterfeit medicines with AI-powered OCR technology. Scan, detect, and stay safe.",
   keywords: "medicine verification, counterfeit detection, OCR, AI, healthcare, pharmaceutical safety",
   authors: [{ name: "Aushadhi-OCR Team" }],
+  other: {
+    "format-detection": "telephone=no, date=no, email=no, address=no"
+  },
   openGraph: {
     title: "Aushadhi-OCR - AI-Powered Medicine Verification",
     description: "Protect yourself from counterfeit medicines with AI-powered OCR technology.",
